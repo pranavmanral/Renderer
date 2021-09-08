@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SelectManager : MonoBehaviour
 {
-    public int opt;
+    public int serialCube;
+    public int serialSphere;
 
     public GameObject EnableModels;
     public static bool ModelDisabled = true;
@@ -21,6 +22,10 @@ public class SelectManager : MonoBehaviour
     public GameObject SphereAdded;
     public static bool SphereDisabled = true;
     public Transform theLocation;
+    public Transform theLocation2;
+
+    public GameObject CubeAdded;
+    public static bool CubeDisabled = true;
 
     public GameObject optloc1;
     public static bool optlocDisabled = true;
@@ -72,21 +77,61 @@ public class SelectManager : MonoBehaviour
 
     public void AddSphere()
     {
-        opt++;
+        //serialSphere++;
 
-        if (opt == 1)
-        {
+       // if (serialSphere <= 1) //&& serialCube == 0) 
+        //{
             if (SphereDisabled)
 
             {
                 SphereAdded.SetActive(true);
                 //SphereAdded.transform.SetParent(theLocation, true);
                 SphereAdded.transform.position = theLocation.position;
+                //serialSphere--;
             }
 
             else
-                SphereAdded.SetActive(false);
-        }
+
+                //SphereAdded.transform.position = theLocation2.position;
+           SphereAdded.SetActive(false);
+       }
+        //else
+        //{
+
+            //SphereAdded.transform.position = theLocation2.position;
+
+       // }
+
+        //serial = 0;
+
+    
+    public void AddCube()
+    {
+       // serialCube++;
+
+       // if (serialCube <= 1 && serialSphere == 0)
+       // {
+            if (CubeDisabled)
+
+            {
+                CubeAdded.SetActive(true);
+                //SphereAdded.transform.SetParent(theLocation, true);
+                CubeAdded.transform.position = theLocation2.position;
+                //serialCube--;
+            }
+
+            //else
+               // CubeAdded.SetActive(false);
+        //}
+       // else
+       // {
+
+           // CubeAdded.transform.position = theLocation2.position;
+
+        //}
+
+        //serial = 0;
+
     }
 
     public void CloseMod()
