@@ -30,6 +30,14 @@ public class SelectManager : MonoBehaviour
     public GameObject optloc1;
     public static bool optlocDisabled = true;
 
+    public GameObject AddMat;
+    public static bool AddMatDis = true;
+
+    public GameObject AssignToGroup;
+    public static bool AssignDis = true;
+
+    public GameObject AssignToGroup2;
+    public static bool AssignDis2 = true;
 
 
     void Start()
@@ -43,6 +51,66 @@ public class SelectManager : MonoBehaviour
         
     
         
+    }
+
+    public void Assign2()
+    {
+        if (AssignDis2)
+
+            AssignToGroup2.SetActive(true);
+
+        else
+            AssignToGroup2.SetActive(false);
+    }
+
+    public void CloseAssign2()
+    {
+        if (AssignDis2)
+
+            AssignToGroup2.SetActive(false);
+
+        else
+            AssignToGroup2.SetActive(true);
+    }
+
+
+    public void Assign()
+    {
+        if (AssignDis)
+
+            AssignToGroup.SetActive(true);
+
+        else
+            AssignToGroup.SetActive(false);
+    }
+
+    public void CloseAssign()
+    {
+        if (AssignDis)
+
+            AssignToGroup.SetActive(false);
+
+        else
+            AssignToGroup.SetActive(true);
+    }
+
+    public void MatAdd()
+    {
+        if (AddMatDis)
+
+            AddMat.SetActive(true);
+
+        else
+            AddMat.SetActive(false);
+    }
+    public void CloseMatt()
+    {
+        if (AddMatDis)
+
+            AddMat.SetActive(false);
+
+        else
+            AddMat.SetActive(true);
     }
 
     public void OpenMod()
