@@ -18,6 +18,10 @@ public class MatGroupsDrop : MonoBehaviour
     List<string> Sphere2 = new List<string>() { "Sphere" };
     public TMPro.TMP_Dropdown dropdown, dropdown2;
 
+
+    List<string> Group1 = new List<string>() { "Material Group 1" };
+    List<string> Group2 = new List<string>() { "Material Group 2" };
+
     public int addSphere2;
 
     public int addSphere;
@@ -26,24 +30,24 @@ public class MatGroupsDrop : MonoBehaviour
 
     public Transform theLoc2;
 
-    public void HandleInputData(int val)
-    {
-        if (val == 1)
-        {
-            Debug.Log("1");
-        }
+    //public void HandleInputData(int val)
+   // {
+       // if (val == 1)
+       // {
+       //     Debug.Log("1");
+       // }
 
-        if (val == 2)
-        {
-            Debug.Log("2");
-        }
+       // if (val == 2)
+      //  {
+       //     Debug.Log("2");
+        //}
 
-        if (val == 3)
-        {
-            Debug.Log("3");
-        }
+        //if (val == 3)
+       // {
+        //    Debug.Log("3");
+       // }
         
-    }
+    //}
 
     public void CreateGroup()
     {
@@ -51,8 +55,12 @@ public class MatGroupsDrop : MonoBehaviour
         if (ser == 1)
         {
             if (MatGrpDis)
+            {
 
+                dropdown.AddOptions(Group1);
+                dropdown2.AddOptions(Group1);
                 MatGrp.SetActive(true);
+            }
 
             else
                 MatGrp.SetActive(false);
@@ -65,8 +73,13 @@ public class MatGroupsDrop : MonoBehaviour
         if (ser == 2)
         {
             if (MatGrpDis2)
+            {
 
+
+                dropdown.AddOptions(Group2);
+                dropdown2.AddOptions(Group2);
                 MatGrp2.SetActive(true);
+            }
 
             else
                 MatGrp2.SetActive(false);
@@ -97,7 +110,7 @@ public class MatGroupsDrop : MonoBehaviour
         if (addSphere == 1)
         {
 
-            dropdown.AddOptions(Sphere);
+            
         }
 
 

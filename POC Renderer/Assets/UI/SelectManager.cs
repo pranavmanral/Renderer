@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SelectManager : MonoBehaviour
 {
@@ -38,6 +40,16 @@ public class SelectManager : MonoBehaviour
 
     public GameObject AssignToGroup2;
     public static bool AssignDis2 = true;
+
+    public GameObject Cube;
+    public Transform loc;
+    public GameObject sphere;
+
+    public int SphereNum;
+    public int CubeNum;
+    public TextMeshProUGUI Cubes;
+
+    public TextMeshProUGUI Spheres;
 
 
     void Start()
@@ -153,15 +165,22 @@ public class SelectManager : MonoBehaviour
 
             {
                 SphereAdded.SetActive(true);
+            
                 //SphereAdded.transform.SetParent(theLocation, true);
                 SphereAdded.transform.position = theLocation.position;
-                //serialSphere--;
-            }
+
+            Instantiate(sphere.gameObject, loc.position, transform.rotation);
+            SphereNum++;
+            Spheres.text = SphereNum.ToString();
+            //serialSphere--; 
+        }
 
             else
 
                 //SphereAdded.transform.position = theLocation2.position;
            SphereAdded.SetActive(false);
+
+            
        }
         //else
         //{
@@ -185,8 +204,13 @@ public class SelectManager : MonoBehaviour
                 CubeAdded.SetActive(true);
                 //SphereAdded.transform.SetParent(theLocation, true);
                 CubeAdded.transform.position = theLocation2.position;
-                //serialCube--;
-            }
+                Instantiate(Cube.gameObject, loc.position, transform.rotation);
+                 CubeNum++;
+                 Cubes.text = CubeNum.ToString();
+
+
+            //serialCube--;
+        }
 
             //else
                // CubeAdded.SetActive(false);
