@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obj_A
   - Canvas
+  - Sphere
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using static TMPro.TMP_Dropdown;
 
 public class MatGroupsDrop : MonoBehaviour
 {
@@ -25,7 +25,6 @@ public class MatGroupsDrop : MonoBehaviour
     public int addSphere2;
 
     public int addSphere;
-
 
 
     public Transform theLoc2;
@@ -89,6 +88,27 @@ public class MatGroupsDrop : MonoBehaviour
             
         }
        
+    }
+
+    public void RemoveGroups()
+    {
+        if (MatGrpDis2)
+        {
+            MatGrp2.SetActive(false);
+            OptionData option2 = dropdown.options.Find(o => string.Equals(o.text, "Material Group 2"));
+            dropdown.options.Remove(option2);
+        }
+
+        if (MatGrpDis)
+        {
+            MatGrp.SetActive(false);
+            OptionData option = dropdown.options.Find(o => string.Equals(o.text, "Material Group 1"));
+            dropdown.options.Remove(option);
+
+        }
+
+        ser = 0;
+
     }
 
     public void AddSphere2()

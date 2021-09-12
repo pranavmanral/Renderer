@@ -8,7 +8,7 @@ public class SelectManager : MonoBehaviour
 {
     public int serialCube;
     public int serialSphere;
-
+    public GameObject Obj_Sphere;
     public GameObject EnableModels;
     public static bool ModelDisabled = true;
 
@@ -50,6 +50,16 @@ public class SelectManager : MonoBehaviour
     public TextMeshProUGUI Cubes;
 
     public TextMeshProUGUI Spheres;
+    public GameObject sph;
+    public static bool sphdis = true;
+    public int SphNum;
+
+    public TextMeshProUGUI SphAddText;
+    public int NumSph;
+
+    public GameObject RemoveButton;
+    public static bool removeDis = true;
+
 
 
     void Start()
@@ -60,9 +70,39 @@ public class SelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SphereNum > 0)
+        {
+            OpenRemove();
+        }
+
+        if (SphereNum <= 0)
+        {
+            RemoveDis();
+        }
         
-    
-        
+    }
+    public void OpenRemove()
+    {
+        if (removeDis)
+        {
+            RemoveButton.SetActive(true);
+        }  
+        else
+        {
+            RemoveButton.SetActive(false);
+        }
+    }
+
+    public void RemoveDis()
+    {
+        if (removeDis)
+        {
+            RemoveButton.SetActive(false);
+        }
+        else
+        {
+            RemoveButton.SetActive(true);
+        }
     }
 
     public void Assign2()
@@ -168,7 +208,7 @@ public class SelectManager : MonoBehaviour
             
                 //SphereAdded.transform.SetParent(theLocation, true);
                 SphereAdded.transform.position = theLocation.position;
-
+            
             Instantiate(sphere.gameObject, loc.position, transform.rotation);
             SphereNum++;
             Spheres.text = SphereNum.ToString();
@@ -190,8 +230,57 @@ public class SelectManager : MonoBehaviour
        // }
 
         //serial = 0;
+      public void SubtractSpheres()
+    {
+        if (SphereNum > 0)
+        {
+            SphereNum--;
+            Destroy(GameObject.FindWithTag("Sphere"));
+            Spheres.text = SphereNum.ToString();
+        }
 
-    
+        if (SphereNum <= 0)
+        {
+            Destroy(GameObject.FindWithTag("Sphere"));
+            SphereNum = 0;
+            Spheres.text = SphereNum.ToString();
+        }
+    }
+
+    public void SphAdd()
+    {
+        if (sphdis)
+        {
+            sph.SetActive(true);
+
+            //Spheres.text = SphereNum.ToString();
+
+            if (SphereNum > 0)
+            {
+                SphereNum--;
+                
+                Spheres.text = SphereNum.ToString();
+
+                NumSph++;
+
+                SphAddText.text = NumSph.ToString();
+            }
+        }
+        else
+            sph.SetActive(false);
+  
+        
+    }
+
+    public void SphClose()
+    {
+        if (sphdis)
+
+            sph.SetActive(false);
+
+        else
+            sph.SetActive(true);
+    }
     public void AddCube()
     {
        // serialCube++;
