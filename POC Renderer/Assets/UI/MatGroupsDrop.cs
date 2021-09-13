@@ -7,6 +7,7 @@ using static TMPro.TMP_Dropdown;
 
 public class MatGroupsDrop : MonoBehaviour
 {
+    public Adding adding2;
     public TextMeshProUGUI output;
     public GameObject MatGrp;
     public GameObject MatGrp2;
@@ -18,7 +19,7 @@ public class MatGroupsDrop : MonoBehaviour
     List<string> Sphere2 = new List<string>() { "Sphere" };
     public TMPro.TMP_Dropdown dropdown, dropdown2;
 
-
+    public GameObject addButton;
     List<string> Group1 = new List<string>() { "Material Group 1" };
     List<string> Group2 = new List<string>() { "Material Group 2" };
 
@@ -30,23 +31,59 @@ public class MatGroupsDrop : MonoBehaviour
     public Transform theLoc2;
 
     //public void HandleInputData(int val)
-   // {
-       // if (val == 1)
-       // {
-       //     Debug.Log("1");
-       // }
+    // {
+    // if (val == 1)
+    // {
+    //     Debug.Log("1");
+    // }
 
-       // if (val == 2)
-      //  {
-       //     Debug.Log("2");
+    // if (val == 2)
+    //  {
+    //     Debug.Log("2");
+    //}
+
+    //if (val == 3)
+    // {
+    //    Debug.Log("3");
+    // }
+
+    //}
+
+    void Start()
+    {
+        adding2 = FindObjectOfType<Adding>(); 
+    }
+
+
+    void Update()
+    {
+        //if (ser == 0)
+       // {
+          //  addButton.SetActive(false);
         //}
 
-        //if (val == 3)
-       // {
-        //    Debug.Log("3");
+        //else
+        //{ 
+            //addButton.SetActive(true);
        // }
-        
-    //}
+
+
+
+
+
+        if (adding2.Added == true)
+        {
+            addButton.SetActive(true);
+        }
+        else
+        { 
+            addButton.SetActive(false);
+        }
+
+
+
+
+    }
 
     public void CreateGroup()
     {

@@ -6,6 +6,9 @@ using TMPro;
 
 public class SelectManager : MonoBehaviour
 {
+    public Adding adding;
+    public GameObject Addbutt;
+    public MatGroupsDrop matgroupsdrop;
     public int serialCube;
     public int serialSphere;
     public GameObject Obj_Sphere;
@@ -44,7 +47,7 @@ public class SelectManager : MonoBehaviour
     public GameObject Cube;
     public Transform loc;
     public GameObject sphere;
-
+    
     public int SphereNum;
     public int CubeNum;
     public TextMeshProUGUI Cubes;
@@ -60,11 +63,172 @@ public class SelectManager : MonoBehaviour
     public GameObject RemoveButton;
     public static bool removeDis = true;
 
+    public GameObject MatAdd1;
+    public static bool Mat1Dis = true;
+
+    public GameObject MatAdd2;
+    public static bool Mat2Dis = true;
+    
+
+    public GameObject MatAdd3;
+    public static bool Mat1Dis3 = true;
+
+    public GameObject MatAdd4;
+    public static bool Mat2Dis4 = true;
+
+    public GameObject Options2;
+    public static bool Options2Dis = true;
+
+
+
+
+   // void Start()
+    //{
+        //adding = FindObjectOfType<Adding>();
+    //}
+
+
+
+    public void Options2Fun()
+    {
+        if (Options2Dis)
+        {
+            Options2.SetActive(true);
+        }
+        else
+        {
+            Options2.SetActive(false);
+        }
+    }
+
+
+    public void Options2FunClose()
+    {
+        if (Options2Dis)
+        {
+            Options2.SetActive(false);
+        }
+        else
+        {
+            Options2.SetActive(true);
+        }
+    }
+
+    /// <summary>
+    /// ///
+    /// </summary>
+
+
+
+
+
+
+    public void AssMat3()
+    {
+        if (Mat1Dis3)
+        {
+            MatAdd3.SetActive(true);
+        }
+        else
+        {
+            MatAdd3.SetActive(false);
+        }
+    }
+
+    public void AssMatClose3()
+    {
+        if (Mat1Dis3)
+        {
+            MatAdd3.SetActive(false);
+        }
+        else
+        {
+            MatAdd3.SetActive(true);
+        }
+    }
+
+    public void AssMat4()
+    {
+        if (Mat2Dis4)
+        {
+            MatAdd4.SetActive(true);
+        }
+        else
+        {
+            MatAdd4.SetActive(false);
+        }
+    }
+
+    public void AssMatClose4()
+    {
+        if (Mat2Dis4)
+        {
+            MatAdd4.SetActive(false);
+        }
+        else
+        {
+            MatAdd4.SetActive(true);
+        }
+    }
+
+
+    
+
+
+    public void AssMat()
+    {
+        if (Mat1Dis)
+        {
+            MatAdd1.SetActive(true);
+        }
+        else
+        {
+            MatAdd1.SetActive(false);
+        }
+    }
+
+    public void AssMatClose()
+    {
+        if (Mat1Dis)
+        {
+            MatAdd1.SetActive(false);
+        }
+        else
+        {
+            MatAdd1.SetActive(true);
+        }
+    }
+
+    public void AssMat2()
+    {
+        if (Mat2Dis)
+        {
+            MatAdd2.SetActive(true);
+        }
+        else
+        {
+            MatAdd2.SetActive(false);
+        }
+    }
+
+    public void AssMat2Close()
+    {
+        if (Mat2Dis)
+        {
+            MatAdd2.SetActive(false);
+        }
+        else
+        {
+            MatAdd2.SetActive(true);
+        }
+    }
+
 
 
     void Start()
     {
-        
+        adding = FindObjectOfType<Adding>();
+        matgroupsdrop = FindObjectOfType<MatGroupsDrop>();
     }
 
     // Update is called once per frame
@@ -78,7 +242,23 @@ public class SelectManager : MonoBehaviour
         if (SphereNum <= 0)
         {
             RemoveDis();
+            Addbutt.SetActive(false);
         }
+
+        //Debug.Log(SphereNum);
+        if (SphereNum == 0)
+        {
+            //Addbutt.SetActive(false);
+            Debug.Log("Remove Button");
+        }
+        //else
+       /// {
+            //Addbutt.SetActive(true);
+        //}
+        //if(matgroupsdrop.ser == 0)
+       // {
+
+        //} 
         
     }
     public void OpenRemove()
@@ -209,7 +389,7 @@ public class SelectManager : MonoBehaviour
                 //SphereAdded.transform.SetParent(theLocation, true);
                 SphereAdded.transform.position = theLocation.position;
             
-            Instantiate(sphere.gameObject, loc.position, transform.rotation);
+            //Instantiate(sphere.gameObject, loc.position, transform.rotation);
             SphereNum++;
             Spheres.text = SphereNum.ToString();
             //serialSphere--; 
@@ -235,15 +415,30 @@ public class SelectManager : MonoBehaviour
         if (SphereNum > 0)
         {
             SphereNum--;
-            Destroy(GameObject.FindWithTag("Sphere"));
+            //Destroy(GameObject.FindWithTag("Sphere"));
             Spheres.text = SphereNum.ToString();
         }
 
         if (SphereNum <= 0)
         {
-            Destroy(GameObject.FindWithTag("Sphere"));
+            //Destroy(GameObject.FindWithTag("Sphere"));
             SphereNum = 0;
             Spheres.text = SphereNum.ToString();
+        }
+    }
+
+    public void SubtractSpheres2()
+    {
+        if (SphereNum > 0)
+        {
+            
+            Destroy(GameObject.FindWithTag("Sphere"));
+        }
+
+        if (SphereNum <= 0)
+        {
+            Destroy(GameObject.FindWithTag("Sphere"));
+            
         }
     }
 
@@ -254,17 +449,21 @@ public class SelectManager : MonoBehaviour
             sph.SetActive(true);
 
             //Spheres.text = SphereNum.ToString();
+           // if (adding.GroupOne == true)
+           // {
+                if (SphereNum > 0)
+                {
 
-            if (SphereNum > 0)
-            {
-                SphereNum--;
-                
-                Spheres.text = SphereNum.ToString();
+                    SphereNum--;
 
-                NumSph++;
+                    Spheres.text = SphereNum.ToString();
 
-                SphAddText.text = NumSph.ToString();
-            }
+                    NumSph++;
+
+                    SphAddText.text = NumSph.ToString();
+
+                }
+           // }
         }
         else
             sph.SetActive(false);
