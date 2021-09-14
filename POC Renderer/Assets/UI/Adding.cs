@@ -12,12 +12,13 @@ public class Adding : MonoBehaviour
     public GameObject SphereParent;
     public bool Added = false;
     public bool GroupOne = false;
-
+    public SelectManager selectmanager;
     public GameObject sphere;
     public GameObject loc;
 
     void Start()
     {
+        selectmanager = FindObjectOfType<SelectManager>();
 
     }
 
@@ -73,11 +74,14 @@ public class Adding : MonoBehaviour
 
        if (ser3 == 1)
         {
-            Instantiate(sphere.gameObject, loc.transform.position, transform.rotation);
-            //Added = true;
+            if (selectmanager.SphereNum > 0)
+            {
+                Instantiate(sphere.gameObject, loc.transform.position, transform.rotation);
+                //Added = true;
 
-            Addition();
-            Debug.Log("Sphere Added to Material 1");
+                Addition();
+                Debug.Log("Sphere Added to Material 1");
+            }
         }
 
         //if (ser3 == 2)

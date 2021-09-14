@@ -234,6 +234,7 @@ public class SelectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(NumSph);
         if (SphereNum > 0)
         {
             OpenRemove();
@@ -245,10 +246,10 @@ public class SelectManager : MonoBehaviour
             Addbutt.SetActive(false);
         }
 
-        //Debug.Log(SphereNum);
+        Debug.Log(SphereNum);
         if (SphereNum == 0)
         {
-            //Addbutt.SetActive(false);
+            Addbutt.SetActive(false);
             Debug.Log("Remove Button");
         }
         //else
@@ -260,6 +261,23 @@ public class SelectManager : MonoBehaviour
 
         //} 
         
+    }
+
+    public void SubtractNum()
+    {
+        if (NumSph > 0)
+        {
+
+            NumSph--;
+            SphAddText.text = NumSph.ToString();
+        }
+
+        else
+        {
+            NumSph = 0;
+            SphAddText.text = NumSph.ToString();
+        }
+
     }
     public void OpenRemove()
     {
